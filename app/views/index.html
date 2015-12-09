@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <title>kugou</title>
+  <title>kugou</title>
+  <base href="../">
+  <link rel="stylesheet" href="stylesheets/main.css">
 </head>
-
-<body>
-    <h1>kugou</h1>
-    <p>kugou linux client</p>
+<body ng-app="kugou" ng-cloak>
+  <div ng-controller="TestCtroller">
+    <input type="text" name="name" ng-model="name" />
+    <p ng-bind="name"></p>
+    <ng-view></ng-view>
+  </div>
 </body>
-
+<script src="asserts/angular/angular.min.js"></script>
+<script src="asserts/angular-route/angular-route.min.js"></script>
+<script src="jslibs/kgService.js"></script>
+<script src="jslibs/kugou.js"></script>
 </html>
-

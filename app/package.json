@@ -5,11 +5,13 @@
   "single-instance": true,
   "window": {
     "title": "kugou",
-    "width": 650,
-    "height": 650,
-    "min_width": 650,
-    "min_height": 650,
-    "toolbar": false
+    "width": 800,
+    "height": 600,
+    "min_width": 800,
+    "min_height": 600,
+    "max_height": 600,
+    "max_width": 800,
+    "toolbar": true
   },
   "chromium-args": "--child-clean-exit"
 }
