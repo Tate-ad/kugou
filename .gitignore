@@ -1,0 +1,4 @@
+node_modules/
+/app/asserts/
+tmp/
+.DS_Store
