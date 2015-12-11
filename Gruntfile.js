@@ -1,6 +1,6 @@
 /*jshint camelcase: false*/
 
-module.exports = function (grunt) {
+module.exports = function(grunt) {
   'use strict';
 
   // load all grunt tasks
@@ -220,7 +220,7 @@ module.exports = function (grunt) {
     }
   });
 
-  grunt.registerTask('chmod32', 'Add lost Permissions.', function () {
+  grunt.registerTask('chmod32', 'Add lost Permissions.', function() {
     var fs = require('fs'),
       path = config.distMac32 + '/kugou.app/Contents/';
     if (fs.existsSync(path + 'Frameworks/node-webkit Helper EH.app/Contents/MacOS/node-webkit Helper EH')) {
@@ -245,7 +245,7 @@ module.exports = function (grunt) {
     }
   });
 
-  grunt.registerTask('chmod64', 'Add lost Permissions.', function () {
+  grunt.registerTask('chmod64', 'Add lost Permissions.', function() {
     var fs = require('fs'),
       path = config.distMac64 + '/kugou.app/Contents/';
     if (fs.existsSync(path + 'Frameworks/node-webkit Helper EH.app/Contents/MacOS/node-webkit Helper EH')) {
@@ -270,12 +270,12 @@ module.exports = function (grunt) {
     }
   });
 
-  grunt.registerTask('createLinuxApp', 'Create linux distribution.', function (version) {
+  grunt.registerTask('createLinuxApp', 'Create linux distribution.', function(version) {
     var done = this.async();
     var childProcess = require('child_process');
     var exec = childProcess.exec;
     var path = './' + (version === 'Linux64' ? config.distLinux64 : config.distLinux32);
-    exec('mkdir -p ' + path + '; cp resources/node-webkit/' + version + '/nw.pak ' + path + ' && cp resources/node-webkit/' + version + '/nw ' + path + '/node-webkit && cp resources/node-webkit/' + version + '/icudtl.dat ' + path + '/icudtl.dat', function (error, stdout, stderr) {
+    exec('mkdir -p ' + path + '; cp resources/node-webkit/' + version + '/nw.pak ' + path + ' && cp resources/node-webkit/' + version + '/nw ' + path + '/node-webkit && cp resources/node-webkit/' + version + '/icudtl.dat ' + path + '/icudtl.dat', function(error, stdout, stderr) {
       var result = true;
       if (stdout) {
         grunt.log.write(stdout);
@@ -291,15 +291,15 @@ module.exports = function (grunt) {
     });
   });
 
-  grunt.registerTask('createWindowsApp', 'Create windows distribution.', function () {
+  grunt.registerTask('createWindowsApp', 'Create windows distribution.', function() {
     var done = this.async();
     var concat = require('concat-files');
     concat([
       'buildTmp/nw.exe',
       'buildTmp/app.nw'
-    ], 'buildTmp/kugou.exe', function () {
+    ], 'buildTmp/kugou.exe', function() {
       var fs = require('fs');
-      fs.unlink('buildTmp/app.nw', function (error, stdout, stderr) {
+      fs.unlink('buildTmp/app.nw', function(error, stdout, stderr) {
         if (stdout) {
           grunt.log.write(stdout);
         }
@@ -310,7 +310,7 @@ module.exports = function (grunt) {
           grunt.log.error(error);
           done(false);
         } else {
-          fs.unlink('buildTmp/nw.exe', function (error, stdout, stderr) {
+          fs.unlink('buildTmp/nw.exe', function(error, stdout, stderr) {
             var result = true;
             if (stdout) {
               grunt.log.write(stdout);
@@ -329,7 +329,7 @@ module.exports = function (grunt) {
     });
   });
 
-  grunt.registerTask('setVersion', 'Set version to all needed files', function (version) {
+  grunt.registerTask('setVersion', 'Set version to all needed files', function(version) {
     var config = grunt.config.get(['config']);
     var appPath = config.app;
     var resourcesPath = config.resources;
@@ -424,10 +424,10 @@ module.exports = function (grunt) {
     'jshint'
   ]);
 
-  grunt.registerTask('dmg', 'Create dmg from previously created app folder in dist.', function () {
+  grunt.registerTask('dmg', 'Create dmg from previously created app folder in dist.', function() {
     var done = this.async();
     var createDmgCommand = 'resources/mac/package.sh "kugou"';
-    require('child_process').exec(createDmgCommand, function (error, stdout, stderr) {
+    require('child_process').exec(createDmgCommand, function(error, stdout, stderr) {
       var result = true;
       if (stdout) {
         grunt.log.write(stdout);
