@@ -2,6 +2,8 @@
   "name": "package",
   "version": "0.0.0",
   "dependencies": {
-    "angular-route": "~1.4.8"
+    "angular-route": "~1.4.8",
+    "normalize-css": "normalize.css#~3.0.3",
+    "requirejs": "~2.1.22"
   }
 }
